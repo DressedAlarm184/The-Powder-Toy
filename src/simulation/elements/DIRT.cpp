@@ -42,7 +42,8 @@ static int update(UPDATE_FUNC_ARGS) {
 			if (rx || ry) {
 				auto r = pmap[y + ry][x + rx];
 				if (!r) continue;
-				if (sim->rng.chance(1, 10) && TYP(r) == PT_WATR) {
+				if (!sim->rng.chance(1, 10)) continue;
+				if (TYP(r) == PT_WATR || TYP(r) == PT_SLTW || TYP(r) == PT_DSTW) {
 					sim->part_change_type(i, x, y, PT_MUD);
 					sim->kill_part(ID(r));
 					return 1;
