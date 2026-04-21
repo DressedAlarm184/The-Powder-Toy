@@ -36,15 +36,14 @@ void Element::Element_DIRT() {
 }
 
 static int update(UPDATE_FUNC_ARGS) {
-	// transform to mud code:
+	// transition code:
 	for (int rx = -1; rx <= 1; rx++) {
 		for (int ry = -1; ry <= 1; ry++) {
 			if (rx || ry) {
 				auto r = pmap[y + ry][x + rx];
 				if (!r) continue;
 				if (sim->rng.chance(1, 10) && TYP(r) == PT_WATR) {
-					sim->create_part(i, x, y, PT_MUD);
-					sim->kill_part(ID(r));
+					sim->part_change_type(i, x, y, PT_MUD);
 					return 1;
 				}
 			}
