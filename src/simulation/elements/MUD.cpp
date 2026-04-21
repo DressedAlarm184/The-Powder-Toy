@@ -32,9 +32,6 @@ void Element::Element_MUD() {
 
 	Properties = TYPE_PART;
 
-	HighTemperature = 383.15f;
-	HighTemperatureTransition = PT_DIRT;
-
 	Update = &update;
 }
 
@@ -52,6 +49,11 @@ static int update(UPDATE_FUNC_ARGS) {
 				}
 			}
 		}
+	}
+	// transition code:
+	if (sim->parts[i].temp > 383.15f) {
+		sim->part_change_type(i, x, y, PT_DIRT);
+		if (y > 0) sim->create_part(-1, x, y - 1, PT_WTRV);
 	}
 	return 0;
 }
