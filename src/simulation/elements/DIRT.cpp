@@ -37,13 +37,14 @@ void Element::Element_DIRT() {
 
 static int update(UPDATE_FUNC_ARGS) {
 	// transition code:
-	for (int rx = -1; rx <= 1; rx++) {
-		for (int ry = -1; ry <= 1; ry++) {
+	for (int rx = -2; rx <= 2; rx++) {
+		for (int ry = -2; ry <= 2; ry++) {
 			if (rx || ry) {
 				auto r = pmap[y + ry][x + rx];
 				if (!r) continue;
 				if (sim->rng.chance(1, 10) && TYP(r) == PT_WATR) {
 					sim->part_change_type(i, x, y, PT_MUD);
+					sim->kill_part(ID(r));
 					return 1;
 				}
 			}
