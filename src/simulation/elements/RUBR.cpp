@@ -10,7 +10,7 @@ void Element::Element_RUBR() {
 
 	Falldown = 0;
 
-	Flammable = 5;
+	Flammable = 3;
 	Explosive = 0;
 	Meltable = 0;
 	Hardness = 2;
@@ -23,6 +23,6 @@ void Element::Element_RUBR() {
 	HighTemperature = 453.15;
 	HighTemperatureTransition = PT_LAVA;
 
-	// HighPressure = 255;
-	// HighPressureTransition = 
+	HighPressure = 255;
+	HighPressureTransition = PT_SHDR;
 }
