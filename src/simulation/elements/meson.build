@@ -197,6 +197,7 @@ simulation_elem_names = [
 	'SEED',
 	'DIRT',
 	'MUD',
+	'RUBR'
 ]
 
 simulation_elem_src = []
