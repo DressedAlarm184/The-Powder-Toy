@@ -23,6 +23,6 @@ void Element::Element_RUBR() {
 	HighTemperature = 453.15;
 	HighTemperatureTransition = PT_LAVA;
 
-	HighPressure = 255;
+	HighPressure = 64;
 	HighPressureTransition = PT_SHDR;
 }
