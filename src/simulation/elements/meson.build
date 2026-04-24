@@ -198,7 +198,8 @@ simulation_elem_names = [
 	'DIRT',
 	'MUD',
 	'RUBR',
-	'SHDR'
+	'SHDR',
+	'GLUE',
 ]
 
 simulation_elem_src = []
