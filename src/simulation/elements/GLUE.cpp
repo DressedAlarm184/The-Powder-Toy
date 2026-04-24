@@ -80,5 +80,20 @@ static int update(UPDATE_FUNC_ARGS) {
 			}
 		}
 	}
+	// hardening code:
+	for (int rx = -4; rx <= 4; rx++) {
+		for (int ry = -4; ry <= 4; ry++) {
+			if (rx || ry) {
+				auto r = pmap[y + ry][x + rx];
+				if (!r) continue;
+				if (!sim->rng.chance(1, 10)) continue;
+				if (TYP(r) == PT_O2) {
+					sim->part_change_type(i, x, y, PT_HRDG);
+					parts[i].vx = 0, parts[i].vy = 0;
+					return 1;
+				}
+			}
+		}
+	}
 	return 0;
 }

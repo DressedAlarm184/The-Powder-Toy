@@ -200,6 +200,7 @@ simulation_elem_names = [
 	'RUBR',
 	'SHDR',
 	'GLUE',
+	'HRDG',
 ]
 
 simulation_elem_src = []
