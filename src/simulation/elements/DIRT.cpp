@@ -25,7 +25,7 @@ void Element::Element_DIRT() {
 	Meltable = 5;
 	Hardness = 1;
 
-	Weight = 90;
+	Weight = 55;
 
 	HeatConduct = 150;
 	Description = "Dirt. Soil. Creates MUD when mixed with WATR.";

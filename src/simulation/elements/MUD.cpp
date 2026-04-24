@@ -56,5 +56,18 @@ static int update(UPDATE_FUNC_ARGS) {
 		if (y > 0) sim->create_part(-1, x, y - 1, PT_WTRV);
 		return 1;
 	}
+	// soaking code:
+	for (auto rx = -1; rx <= 1; rx++) {
+		for (auto ry = -1; ry <= 1; ry++) {
+			if (!(rx || ry)) continue;
+			auto r = pmap[y+ry][x+rx];
+			if (!r) continue;
+			if (!sim->rng.chance(1, 240)) continue;
+			if (TYP(r) != PT_DIRT) continue;
+			sim->part_change_type(i, parts[i].x, parts[i].y, PT_DIRT);
+			sim->part_change_type(ID(r), parts[ID(r)].x, parts[ID(r)].y, PT_MUD);
+			return 1;
+		}
+	}
 	return 0;
 }
