@@ -32,6 +32,9 @@ void Element::Element_DIRT() {
 
 	Properties = TYPE_PART;
 
+	HighTemperature = 1835.0f;
+	HighTemperatureTransition = PT_LAVA;
+
 	Update = &update;
 }
 

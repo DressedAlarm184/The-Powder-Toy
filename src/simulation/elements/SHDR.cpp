@@ -1,5 +1,7 @@
 #include "simulation/ElementCommon.h"
 
+static int update(UPDATE_FUNC_ARGS);
+
 void Element::Element_SHDR() {
 	Identifier = "DEFAULT_PT_SHDR";
 	Name = "SHDR";
@@ -32,4 +34,24 @@ void Element::Element_SHDR() {
 
 	HighTemperature = 443.15;
 	HighTemperatureTransition = PT_LAVA;
+
+	Update = &update;
+}
+
+static int update(UPDATE_FUNC_ARGS) {
+	// clumping code:
+	for (auto rx = -2; rx <= 2; rx++) {
+		for (auto ry = -2; ry <= 2; ry++) {
+			if (rx || ry) {
+				auto r = pmap[y+ry][x+rx];
+				if (!r) continue;
+				if (TYP(r) == PT_SHDR) {
+					float cxy = 0.005f;
+					parts[i].vx += cxy * rx;
+					parts[i].vy += cxy * ry;
+				}
+			}
+		}
+	}
+	return 0;
 }
